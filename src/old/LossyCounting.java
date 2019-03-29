@@ -1,3 +1,4 @@
+package old;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,13 +24,6 @@ import org.apache.storm.utils.Utils;
 
 public class LossyCounting implements IRichBolt {
 
-
-    public class Entities {
-        public String element;
-        public int freq;
-        public int delta;
-        public double timestamp;
-    }
 
     private OutputCollector collector;
     private int Elements = 0;
@@ -140,11 +134,8 @@ public class LossyCounting implements IRichBolt {
                     	j++;
                     	if(j==100) break;
                      } 
-               		System.out.println("AAfinal emit size"+finalEmit.size());
-               		for(String s: finalEmit.keySet()){
-						collector.emit(new Values(s, finalEmit.get(s)));
-					}
-                    //collector.emit(new Values(finalEmit.keySet().toString(), currentTime));
+               		System.out.println("final emit size"+finalEmit.size());
+                    collector.emit(new Values(finalEmit.keySet().toString(), currentTime));
                     //System.out.println("str:" + str.toString());
                 }
             }
@@ -221,15 +212,13 @@ public class LossyCounting implements IRichBolt {
 
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
 
-        //declarer.declare(new Fields("hashtag", "time"));
-        declarer.declare(new Fields("hashtag", "freq"));
+        declarer.declare(new Fields("hashtag", "time"));
     }
 
     @Override
     public Map<String, Object> getComponentConfiguration() {
         return null;
     }
-
 
 
 }

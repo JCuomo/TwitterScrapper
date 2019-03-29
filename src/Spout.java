@@ -34,7 +34,7 @@ import java.io.File;
 
 
 @SuppressWarnings("serial")
-public class TwitterStormSpout extends BaseRichSpout {
+public class Spout extends BaseRichSpout {
     SpoutOutputCollector _collector;
     LinkedBlockingQueue<Status> queue = null;
     TwitterStream _twitterStream;
@@ -49,7 +49,7 @@ public class TwitterStormSpout extends BaseRichSpout {
     String accessTokenSecret;
     String[] keyWords;
 
-    public TwitterStormSpout(String consumerKey, String consumerSecret,
+    public Spout(String consumerKey, String consumerSecret,
                              String accessToken, String accessTokenSecret, String[] keyWords) {
         this.consumerKey = consumerKey;
         this.consumerSecret = consumerSecret;
@@ -58,7 +58,7 @@ public class TwitterStormSpout extends BaseRichSpout {
         this.keyWords = keyWords;
     }
 
-    public TwitterStormSpout() {
+    public Spout() {
         // TODO Auto-generated constructor stub
     }
 

@@ -103,10 +103,10 @@ public class WordCountTopology {
 
     TopologyBuilder builder = new TopologyBuilder();
 
-    builder.setSpout("spout", new RandomSentenceSpout(), 5);
+    builder.setSpout("spout", new RandomSentenceSpout(), 2);
 
-    builder.setBolt("split", new SplitSentence(), 8).shuffleGrouping("spout");
-    builder.setBolt("count", new WordCount(), 12).fieldsGrouping("split", new Fields("word"));
+    builder.setBolt("split", new SplitSentence(), 3).shuffleGrouping("spout");
+    builder.setBolt("count", new WordCount(), 4).fieldsGrouping("split", new Fields("word"));
 
     Config conf = new Config();
     conf.setDebug(true);
@@ -120,7 +120,7 @@ public class WordCountTopology {
       conf.setMaxTaskParallelism(3);
 
       LocalCluster cluster = new LocalCluster();
-      cluster.submitTopology("word-count", conf, builder.createTopology());
+      StormSubmitter.submitTopology("word-count", conf, builder.createTopology());
 
       Thread.sleep(100);
 

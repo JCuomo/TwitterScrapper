@@ -17,7 +17,7 @@ import twitter4j.Status;
 
 @SuppressWarnings("serial")
 
-public class HashtagReaderBolt implements IRichBolt {
+public class ReaderBolt implements IRichBolt {
     private OutputCollector collector;
 //    private FileWriter fileWriter;
 //    private BufferedWriter bw;
