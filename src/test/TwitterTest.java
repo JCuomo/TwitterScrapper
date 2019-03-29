@@ -1,3 +1,4 @@
+package test;
 import twitter4j.RawStreamListener;
 import twitter4j.TwitterException;
 import twitter4j.TwitterStream;
@@ -5,7 +6,7 @@ import twitter4j.TwitterStreamFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
-public class twitter {
+public class TwitterTest {
 	
     public static void main(String[] args) throws TwitterException {
     	String accessToken = "1105927449991274496-6CjiPkops1nOQDyTXdTwss7GeQDQS3";
